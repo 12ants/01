@@ -3,7 +3,7 @@
 #########################
 ## -- CUSTOM LINUX --  ##
 #########################
-##
+## This file should be in - /etc/bash.bashrc -
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -111,8 +111,9 @@ mv /root/.bashrc /root/.bashrc_bu ;
 wget -O "/etc/bash.bashrc" $rootgit/sh/bash.bashrc.sh;
 echo DONE;
 '
-alias mm=micro
-alias e=echo
+alias "0000"="wget -O https://github.com/12ants/01/raw/main/00.sh; .00.sh"
+alias "mm"="micro"
+alias "e"="echo"
 alias "00_update_all"="wget -O "update.sh" 12ants.github.io && bash "update.sh""
 alias "2222"="wget -O "update.sh" 12ants.github.io && bash "update.sh""
 alias "oooo"="tput setaf 7 dim; fortune; tput sgr0;"

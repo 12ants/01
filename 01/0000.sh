@@ -2,7 +2,7 @@
 
 
 echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer;
-00url="12ants.github.io/01"
+export "00url="12ants.github.io/01""
 mkdir /home"$SUDO_USER"/01; chown $SUDO_USER: /home"$SUDO_USER"/01; cd /home"$SUDO_USER"/01;
 wget -O "00_choice.sh" "$00url/00_choice.sh"
 

@@ -108,17 +108,22 @@ fi
 '
 
 
-
+alias "files"='/home/afiles/htdocs/files.12ants.com/files/ -b; chown afiles: "/home/afiles/htdocs/files.12ants.com/files/* -R; "'
 alias "ip"='echo ;
 echo " $(tput setaf 6) ------$(tput setaf 2) Public IP: $(tput sgr0)$(ippub)$(tput setaf 6)";
 echo " $(tput setaf 6) ---------------------------------- " ;
-echo " $(tput setaf 6) ------$(tput setaf 4) Network IP: $(tput sgr0)$(iphome)$(tput setaf 6)"; echo; '
+echo " $(tput setaf 6) ------$(tput setaf 4) Network IP: $(tput sgr0)$(ipnet)$(tput setaf 6)"; echo; '
 
 alias portsopen='echo -e " $(tput smso) " ; ss -rnpf inet'
 alias ports='echo -e "\n\n   $cyan-$re Open ports on local network"$cyan" -"$re" \n";
  echo -e " -- -- -- -- -- -- -- $(portsopen;  echo " -- -- -- -- -- -- --")"|column -tLo "$(tput sgr0)|  " -tLo "  $(tput sgr0)||   " -H 1,2,3,4,8; echo -e "\n\n" '
 alias "greet"='echo -n -e "  $(tput setaf 6)--$re Welcome back $darkblue $USER, $re today is:$blue "; date; echo;'
 
+
+
+
+alias "b1"="tput cub1; "
+alias "b2"="tput cub1; tput cub1; "
 
 alias "u1"="tput cuu1; "
 alias "u2"="tput cuu1; tput cuu1; "
@@ -130,12 +135,11 @@ alias "00_update_all"="wget -O "update.sh" 12ants.github.io/01 && bash "update.s
 alias "00_b"="wget -O "/etc/bash.bashrc" 12ants.github.io/01/bash.sh"
 alias "oooo"="tput setaf 7 dim; fortune; tput sgr0;"
 alias "rot"="sudo -s"
-alias "iphome"="hostname -i>ip_network 2> /dev/null; hostname -I>>ip_network 2>/dev/null; tail -c14 ip_network; "
-alias "ipnet"="hostname -I | head -c 13";
-alias "ippub"="curl ifconfig.me 2>/dev/null";
+alias "ipnet"="tput setab 22; hostname -I|head -c 13; tput sgr0;";
+alias "ippub"="wget -qO- ifconfig.me";
 alias "ipports"="sudo lsof -i -P -n";
 alias "besh"="micro /etc/bash.bashrc"
-alias "laan"="ssh 192.168.0.107"
+alias "107"="ssh 192.168.0.107"
 alias "ipa"="ip"
 alias "mm"="micro"
 alias "e"="echo"
@@ -149,5 +153,5 @@ alias "qq"="cd .."
 greet
 oooo
 ip
-PS1="\[\e[92;2;4m\]\$\[\e[0m\] [\[\e[95m\]$?\a\[\e[0;2m\].\[\e[90m\]\t\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[92;2m\]"$(iphome)"\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[36;1;3;4;53m\]\u\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[93;2m\]\w\[\e[0m\]] >\[\e[2;4m\]_\[\e[0m\]
+PS1="\[\e[92;2;4m\]\$\[\e[0m\] [\[\e[95m\]$?\a\[\e[0;2m\].\[\e[90m\]\t\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[24;2m\]"$(ipnet)"\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[36;1;3;4;53m\]\u\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[93;2m\]\w\[\e[0m\]] >\[\e[2;4m\]_\[\e[0m\]
 "

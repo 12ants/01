@@ -1,6 +1,6 @@
 #/bin/bash
-echo "    $magenta -- $re Installing Tard-Grub 2.0 $magenta -- $re
-" sleep 1 ;
+echo "--  Installing Tard-Grub 2.0..."
+
 mkdir -p -m 775 /boot/grub/ ; 
 cd /boot/grub/ ;
 # wget https://github.com/12ants/ss/raw/main/tard.jpg ;
@@ -17,10 +17,6 @@ GRUB_DISABLE_OS_PROBER=false
 GRUB_HIDDEN_TIMEOUT=0
 GRUB_CMDLINE_LINUX="" 
 GRUB_CMDLINE_LINUX_DEFAULT="--" 
-GRUB_TERMINAL_OUTPUT="console"
-GRUB_CMDLINE_LINUX="/root"
-GRUB_DISABLE_RECOVERY="false"
-
 
 ' > /etc/default/grub; 
 

@@ -3,7 +3,7 @@
 #########################
 ## -- CUSTOM LINUX --  ##
 #########################
-## This file should be in - /etc/bash.bashrc -
+##
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -96,11 +96,6 @@ if ! shopt -oq posix; then
 fi
 
 
-ipnet="hostname -I"
-ippublic="dig +short myip.opendns.com @resolver1.opendns.com"
-ippub="dig +short myip.opendns.com @resolver1.opendns.com"
-ipa="echo ---- $blue Network IP:$cyan ; $ipnet; ---- $purple Public  IP:$cyan ; $ippublic;"
-alias ipa="echo ---- $blue Network IP:$cyan ; $ipnet; ---- $purple Public  IP:$cyan ; $ippublic;"
 
 
 alias loginscreen='
@@ -113,37 +108,46 @@ fi
 '
 
 
-alias "00_update_bash"='
-read -ep "  -- url:" -i "https://github.com/12ants/00/raw/main" rootgit
-mv /etc/bash.bashrc /etc/bash.bashrc_bu ; 
-mv /home/$SUDO_USER/.bashrc /home/$SUDO_USER/.bashrc_bu ; 
-mv /root/.bashrc /root/.bashrc_bu ; 
 
-wget -O "/etc/bash.bashrc" $rootgit/sh/bash.bashrc.sh;
-echo DONE;
-'
-alias "0000"="wget -O https://github.com/12ants/01/raw/main/00.sh; .00.sh"
-alias "mm"="micro"
-alias "e"="echo"
-alias "00_update_all"="wget -O "update.sh" 12ants.github.io && bash "update.sh""
-alias "2222"="wget -O "update.sh" 12ants.github.io && bash "update.sh""
-alias "oooo"="tput setaf 7 dim; fortune; tput sgr0;"
-alias "rot"="sudo -s"
-alias "iphome"="hostname -i>ip_network 2> /dev/null; hostname -I>>ip_network 2>/dev/null; tail -c15 ip_network; "
-alias "ipnet"="hostname -I | head -c 13";
-alias "ippub"="curl ifconfig.me 2>/dev/null";
-alias "ipports"="sudo lsof -i -P -n";
-#ip-alias
 alias "ip"='echo ;
 echo " $(tput setaf 6) ------$(tput setaf 2) Public IP: $(tput sgr0)$(ippub)$(tput setaf 6)";
 echo " $(tput setaf 6) ---------------------------------- " ;
 echo " $(tput setaf 6) ------$(tput setaf 4) Network IP: $(tput sgr0)$(iphome)$(tput setaf 6)"; echo; '
-#/ip-alias
-#alias-greet
+
+alias portsopen='echo -e " $(tput smso) " ; ss -rnpf inet'
+alias ports='echo -e "\n\n   $cyan-$re Open ports on local network"$cyan" -"$re" \n";
+ echo -e " -- -- -- -- -- -- -- $(portsopen;  echo " -- -- -- -- -- -- --")"|column -tLo "$(tput sgr0)|  " -tLo "  $(tput sgr0)||   " -H 1,2,3,4,8; echo -e "\n\n" '
 alias "greet"='echo -n -e "  $(tput setaf 6)--$re Welcome back $darkblue $USER, $re today is:$blue "; date; echo;'
-#/alias-greet
+
+
+alias "u1"="tput cuu1; "
+alias "u2"="tput cuu1; tput cuu1; "
+alias "u3"="tput cuu1; tput cuu1; tput cuu1; "
+alias "u4"="tput cuu1; tput cuu1; tput cuu1; tput cuu1; "
+
+
+alias "00_update_all"="wget -O "update.sh" 12ants.github.io/01 && bash "update.sh""
+alias "00_b"="wget -O "/etc/bash.bashrc" 12ants.github.io/01/bash.sh"
+alias "oooo"="tput setaf 7 dim; fortune; tput sgr0;"
+alias "rot"="sudo -s"
+alias "iphome"="hostname -i>ip_network 2> /dev/null; hostname -I>>ip_network 2>/dev/null; tail -c14 ip_network; "
+alias "ipnet"="hostname -I | head -c 13";
+alias "ippub"="curl ifconfig.me 2>/dev/null";
+alias "ipports"="sudo lsof -i -P -n";
+alias "besh"="micro /etc/bash.bashrc"
+alias "laan"="ssh 192.168.0.107"
+alias "ipa"="ip"
+alias "mm"="micro"
+alias "e"="echo"
+alias "qq"="cd .."
+#ip-alias
+
+####
+#### Welcome screen
+####
+
 greet
 oooo
-ip 
-PS1="\[\e[92;2;4m\]\$\[\e[0m\] [\[\e[95m\]$?\a\[\e[0;2m\].\[\e[90m\]\t\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[92;2m\]$(iphome)\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[36;1;3;4;53m\]\u\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[93;2m\]\w\[\e[0m\]] >\[\e[2;4m\]_\[\e[0m\]
+ip
+PS1="\[\e[92;2;4m\]\$\[\e[0m\] [\[\e[95m\]$?\a\[\e[0;2m\].\[\e[90m\]\t\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[92;2m\]"$(iphome)"\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[36;1;3;4;53m\]\u\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[93;2m\]\w\[\e[0m\]] >\[\e[2;4m\]_\[\e[0m\]
 "

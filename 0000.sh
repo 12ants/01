@@ -29,11 +29,14 @@ bash grub.sh
 ##
 ##
 bash cloudpanel_ask.sh
-##
-##
+rm "/etc/update-motd.d/10-cloudpanel"
+
+
+
 ## WEBMIN
 ##
 wget -O setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh;
 sh setup-repos.sh
 sudo apt update; sudo apt install webmin --install-recommends;
 
+ufw allow 2096

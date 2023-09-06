@@ -3,8 +3,7 @@
 
 echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer;
 
-
-
+apt -y install ssh openssh-server openssl curl wget dnsutils nano micro googler w3m btop mc neofetch googler lolcat pv;
 ## BASH
 ##
 rm /root/.profile 

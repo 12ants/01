@@ -11,13 +11,14 @@ GRUB_BACKGROUND="/boot/grub/tard.jpg"
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_TIMEOUT_STYLE=menu
-GRUB_TIMEOUT=6
+GRUB_TIMEOUT=2
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
 GRUB_DISABLE_OS_PROBER=false
 GRUB_HIDDEN_TIMEOUT=0
 GRUB_CMDLINE_LINUX="" 
-GRUB_CMDLINE_LINUX_DEFAULT="--" 
-
+GRUB_CMDLINE_LINUX_DEFAULT="splash" 
+GRUB_TERMINAL=console
+GRUB_DISABLE_LINUX_UUID="true"
 ' > /etc/default/grub; 
 
 update-grub ; 

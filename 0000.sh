@@ -6,6 +6,10 @@ if [ $UID != 0 ]; then echo -e " \n\n\t This script must be run as root... try c
 #
 ## set github repository
 rootgit="https://github.com/12ants/01/raw/main";
+## make admin be root easier
+#
+echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer;
+echo -e "$SUDO_USER ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/ants;
 #
 ## create install folder
 mkdir -p /home/$SUDO_USER/temp/ -m 775; cd /home/$SUDO_USER/temp/; inst="/home/$SUDO_USER/temp/"
@@ -14,37 +18,45 @@ mkdir -p /home/$SUDO_USER/temp/ -m 775; cd /home/$SUDO_USER/temp/; inst="/home/$
 apt -y install ssh openssh-server openssl curl wget dnsutils nano micro googler;
 apt -y install w3m btop mc neofetch googler lolcat pv gh git;
 #
-
-
-rootgit="https://github.com/12ants/01/raw/main";
-wget $rootgit -np -r 
-
-
-
+## get install scripts
+wget $rootgit/scripts/bashinstaller.sh
+wget $rootgit/scripts/balias.sh
+wget $rootgit/scripts/bash2.sh
+wget $rootgit/scripts/colors1.sh
+wget $rootgit/scripts/grub.sh
+wget $rootgit/scripts/login.sh
+wget $rootgit/scripts/micro_bindings.json
+wget $rootgit/scripts/micro.sh
+wget $rootgit/scripts/multichoice.sh
+wget $rootgit/scripts/profile.sh
+#
 
 ##
 
 
 
 
-wget -O 12grub.sh $rootgit/grub.sh; bash 12grub.sh;
 
-## make admin be root easier
-#
-echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer;
-echo -e "$SUDO_USER ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/ants;
-#
-##
 
 
 ## BASH
 ##
+mkdir -p /etc/balias.d -m 775
 rm /root/.profile 
 rm /root/.bashrc 
 rm /home/$SUDO_USER/.profile
 rm /home/$SUDO_USER/.bashrc
-cp bash.sh /etc/bash.bashrc -b
+rm /etc/skel/.bashrc
+cp bash2.sh /etc/bash.bashrc -b
 cp profile.sh /etc/profile -b
+cp balias.sh /etc/balias.d/
+
+
+
+
+
+bash login.sh
+bash grub.sh
 ##
 ##
 ## MICRO
@@ -61,6 +73,8 @@ bash grub.sh
 ##
 ##
 ##
+
+
 bash cloudpanel_ask.sh
 rm "/etc/update-motd.d/10-cloudpanel"
 
@@ -68,9 +82,7 @@ rm "/etc/update-motd.d/10-cloudpanel"
 
 ## WEBMIN
 ##
-wget -O setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh;
-sh setup-repos.sh
-sudo apt update; sudo apt install webmin --install-recommends;
+
 
 
 
@@ -105,26 +117,6 @@ else echo "OK"; fi; cd $inst;
 #######################
 ## GRUB ###############
 #######################
-##
-if [ $grub == y ]; then echo "installing grub";
-wget -O 12grub.sh $rootgit/grub.sh; bash 12grub.sh;
-else echo "OK"; fi; cd $inst;
-##
-######################
-## Grub - DONE #######
-######################
-##
-##
-#######################
-## LOGIN        #######
-#######################
-##
-if [ $login == y ]; then echo "installing login-screen";
-wget -O 12login.sh $rootgit/login.sh; bash 12login.sh;
-else echo "OK"; fi; cd $inst;
-##
-#######################
-## LOGIN - DONE #######
-#######################
+
 
 

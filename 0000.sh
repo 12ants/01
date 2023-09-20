@@ -17,7 +17,9 @@ mkdir -p /home/$SUDO_USER/temp/ -m 775; cd /home/$SUDO_USER/temp/; inst="/home/$
 ## basic apps
 apt update; apt upgrade -y;
 apt -y install ssh openssh-server openssl curl wget dnsutils nano micro googler;
-apt -y install w3m btop mc neofetch googler lolcat pv gh git;
+apt -y install w3m btop mc neofetch googler lolcat pv gh git fortune;
+ln /usr/games/fortune /bin/;
+
 # Debian/Ubuntu
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg

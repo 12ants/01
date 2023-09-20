@@ -1,6 +1,6 @@
 #!/bin/bash
 ## login
-echo "Banner /etc/ssh/issue" >> /etc/ssh/sshd-config
+echo "Banner /etc/issue" >> /etc/ssh/sshd-config
 echo '
 
   Welcome to 12ants.com -- today is \d \t @ \n

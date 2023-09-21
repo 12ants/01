@@ -62,7 +62,6 @@ while read l ; do printf '# bash %s;\n' "$l"  ; done < bass.sh
 
 ## BASH
 ##
-mkdir -p /etc/balias.d -m 775
 rm /root/.profile 
 rm /root/.bashrc 
 rm /home/$SUDO_USER/.profile

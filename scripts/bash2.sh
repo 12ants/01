@@ -57,6 +57,10 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+
+
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -67,6 +71,15 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+export bold=$(tput bold) dim=$(tput dim) so=$(tput smso) noso=$(tput rmso) rev=$(tput rev) re=$(tput sgr0) normal=$(tput sgr0) \
+redb=$(tput setab 1) greenb=$(tput setab 2) yellowb=$(tput setab 3) blueb=$(tput setab 4) purpleb=$(tput setab 5) cyanb=$(tput setab 6) \
+grayb=$(tput setab 7) red=$(tput setaf 1) green=$(tput setaf 2) yellow=$(tput setaf 3) blue=$(tput setaf 4) purple=$(tput setaf 5) \
+cyan=$(tput setaf 6) gray=$(tput setaf 7) white=$(tput setaf 7 bold) pink=$(tput setaf 5 bold) darkblue=$(tput setab 5 bold) blink=$(tput blink) \
+left2=$(tput cub 2) up1=$(tput cuu1) c75=$(echo "  ---------------------------------------------------------------------------"); clear; echo ; c2="$cyan --$re";
+
+
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -103,10 +116,9 @@ fi
 ####
 
 greet
-oooo
 ipa
 
 
 ## bash prompt
-PS1="\[\e[92;2;4m\]\$\[\e[0m\].[\[\e[95m\]$_\a\[\e[0;2m\].\[\e[90m\]\t\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[24;2m\]"$(ipnet)"\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[36;1;3;4;53m\]\u\[\e[0m\]]\[\e[2m\].\[\e[0m\][\[\e[93;2m\]\w\[\e[0m\]] >\[\e[2;4m\]_\[\e[0m\]
-"
+PS1='\$[\[\e[92;2m\]\t\[\e[0m\]][\[\e[95m\]$(ipnet)\[\e[0m\]][\[\e[96m\]\u\[\e[0m\]][\[\e[93m\]$(pwd)\[\e[0m\]] \[\e[97;1m\]>\[\e[37;4m\]_\n\[\e[0m\]'
+

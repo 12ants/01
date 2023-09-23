@@ -10,17 +10,11 @@ rootgit="https://github.com/12ants/01/raw/main";
 #
 echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10-installer;
 echo -e "$SUDO_USER ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/ants;
-#
-## create install folder
-mkdir -p /home/$SUDO_USER/temp/ -m 775; cd /home/$SUDO_USER/temp/; inst="/home/$SUDO_USER/temp/"
-#
 ## basic apps
 apt update; apt upgrade -y;
 apt -y install ssh openssh-server openssl curl wget dnsutils nano micro googler;
 apt -y install w3m btop mc neofetch googler lolcat pv gh git fortune;
 ln /usr/games/fortune /bin/;
-
-# Debian/Ubuntu
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
 echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
@@ -29,6 +23,40 @@ curl -sfL https://raw.githubusercontent.com/mistakenelf/fm/main/install.sh | sh;
 
 
 
+
+
+
+
+
+##
+#######################
+## WEBMIN        ######
+#######################
+##
+read -ep  "  $c2  install$green webmin? $re [y/n]: " -i "n" "webmin"
+##
+if [ $webmin == y ]; then echo "installing webmin";
+wget https://download.webmin.com/devel/tarballs/webmin-current.tar.gz;
+tar -xf webmin-current.tar.gz --strip-components=1; 
+echo ; read -p "  -- Recommended port is$pink 2096$cyan Ok" okokokok;
+./setup.sh /usr/local/webmin;
+echo ; read -p "  -- Recommended port is$pink 2096$cyan Ok" okokokok;
+ufw allow 2096
+else echo "OK"; fi; cd $inst;
+##
+#######################
+## WEBMIN - DONE ######
+#######################
+##
+
+
+#
+#
+#
+#
+## create install folder
+mkdir -p /home/$SUDO_USER/temp/ -m 775; cd /home/$SUDO_USER/temp/; inst="/home/$SUDO_USER/temp/"
+#
 #
 ## get install scripts
 wget $rootgit/scripts/bashinstaller.sh
@@ -73,29 +101,6 @@ cp balias.sh /etc/balias
 
 
 
-
-
-
-##
-#######################
-## WEBMIN        ######
-#######################
-##
-read -ep  "  $c2  install$green webmin? $re [y/n]: " -i "n" "webmin"
-##
-if [ $webmin == y ]; then echo "installing webmin";
-wget https://download.webmin.com/devel/tarballs/webmin-current.tar.gz;
-tar -xf webmin-current.tar.gz --strip-components=1; 
-echo ; read -p "  -- Recommended port is$pink 2096$cyan Ok" okokokok;
-./setup.sh /usr/local/webmin;
-echo ; read -p "  -- Recommended port is$pink 2096$cyan Ok" okokokok;
-ufw allow 2096
-else echo "OK"; fi; cd $inst;
-##
-#######################
-## WEBMIN - DONE ######
-#######################
-##
 
 
 

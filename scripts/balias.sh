@@ -10,7 +10,7 @@ then echo Graphical; systemctl set-default graphical.target;
 else echo Terminal; systemctl set-default multi-user.target;
 fi
 '
-alias mmbinds=micro "/home/$USER/.config/micro/bindings.json"
+alias mmbinds="micro /home/$USER/.config/micro/bindings.json"
 
 alias "files"='cd /home/files/htdocs/files.12ants.com/files/ -b; chown files: "/home/afiles/htdocs/files.12ants.com/files/* -R; "'
 
@@ -43,8 +43,10 @@ alias "00_b"="wget -O "/etc/bash.bashrc" 12ants.github.io/01/bash.sh"
 alias "oooo"="tput setaf 7 dim; fortune; tput sgr0;"
 alias "rr"="sudo -s"
 alias "besh"="micro /etc/bash.bashrc"
-alias "107"="ssh 192.168.0.107"
+alias "100"="ssh 192.168.0.100"
 alias "mm"="micro"
 alias "ee"="echo"
 alias "qq"="cd .."
 alias "bb"="btop --utf-force"
+alias "balias"="micro /etc/balias"
+

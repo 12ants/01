@@ -1,0 +1,45 @@
+/* ----  */
+/* webmin overlay terminal  */
+#terminal-dd {
+background: #00000022;
+padding: 0;
+height: unset;
+min-height: 22px;
+max-height: 100%;
+width: unset;
+min-width: 22px;
+max-width: 100%;
+overflow: hidden;
+}
+
+.-shell-port-.opened {
+position: fixed;
+z-index: 22222;
+top: 4px;
+min-width: 22px;
+min-height: 22px;
+right: unset;
+bottom: unset !important;
+left: 4px;
+background-color: #000000d4;
+}
+
+.-shell-port-container .-shell-port-close {
+position: absolute;
+z-index: 11011;
+top: -82px;
+right: -12px;
+width: 100px;
+height: 100px;
+cursor: pointer;
+-webkit-transform: none;
+transform: rotate(315deg);
+-webkit-transform-origin: center;
+transform-origin: center;
+background-color: #00444488;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+-moz-osx-font-smoothing: grayscale;
+width: 22px;
+height: 22px;
+}
